@@ -117,8 +117,8 @@ autoload -Uz compinit; compinit
 source ~/.config/zsh/completion.zsh
 
 PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.go/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
-PATH=$PATH:/usr/local/go/bin
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
