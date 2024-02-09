@@ -37,4 +37,5 @@ alias wifi="nmcli dev wifi"
 alias less="less -i"
 alias python=python3
 
-alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+# old way of managing dot files, now I'm using stow
+# alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
