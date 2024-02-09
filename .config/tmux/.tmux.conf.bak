@@ -1,0 +1,9 @@
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+set-option -g status-style bg=orange
+
+bind-key R source-file ~/.tmux.conf \; \
+	   display-message "source-file done"
+
+set-option -g default-terminal "screen-256color"

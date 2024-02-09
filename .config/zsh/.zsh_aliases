@@ -1,0 +1,40 @@
+# Common typos
+alias "cd.."="cd .."
+alias sl=ls
+
+alias v="nvim"
+alias vim="nvim"
+
+alias ls="ls --color=auto"
+alias l="ls"
+alias ll="ls -la"
+
+# Git stuff
+alias lg="lazygit"
+alias g="git"
+alias gs="git status"
+alias gc="git commit -m"
+alias gl="git log"
+
+# Tmux
+alias t="tmux -u"
+alias tls="tmux list-sessions"
+alias ta="tmux -u attach"
+
+aliasifexists() {
+    if command -v $2 &> /dev/null; then
+        alias $1="$3"
+    fi
+}
+
+aliasifexists ls exa "exa --icons"
+aliasifexists du dust dust
+aliasifexists bat batcat "batcat -p"
+
+alias music="mpv --no-video"
+alias open="xdg-open"
+alias wifi="nmcli dev wifi"
+alias less="less -i"
+alias python=python3
+
+alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
