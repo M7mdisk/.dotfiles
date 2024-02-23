@@ -25,7 +25,7 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 IN_VIM=$(ps -p $PPID -o comm= | grep -qsE '[gm]?vim' && echo 1)
 
 # Use vim bindings, except when we're actually in vim
-[ -z $IN_VIM ] && bindkey -v || bindkey -e
+# [ -z $IN_VIM ] && bindkey -v || bindkey -e
 
 export KEYTIMEOUT=1
 
@@ -40,6 +40,8 @@ bindkey "\E[4~" end-of-line
 bindkey "\E[H" beginning-of-line
 bindkey "\E[F" end-of-line
 bindkey "\E[3~" delete-char
+bindkey '^P' up-line-or-history
+bindkey "^N" down-line-or-history
 
 
 # Change cursor shape based on vim mode
@@ -113,11 +115,16 @@ SAVEHIST=1000
 HISTFILE=~/.cache/.zsh_history
 
 # Use modern completion system
-autoload -Uz compinit; compinit
+autoload -Uz compinit; compinit -d ~/.cache/.zcompdump
 source ~/.config/zsh/completion.zsh
 
+# Rust
 PATH="$HOME/.cargo/bin:$PATH"
+
+# Go
+PATH=$PATH:/usr/local/go/bin
 PATH="$HOME/.go/bin:$PATH"
+
 PATH="$HOME/.local/bin:$PATH"
 
 eval "$(zoxide init zsh)"
