@@ -1,7 +1,11 @@
-# set hidden true
-map DD delete
-map . set hidden!
+# Sane defaults
+set number
+set relativenumber
 set drawbox
+
+
+# Visuals
+set icons
 
 
 cmd open &{{
@@ -11,20 +15,18 @@ cmd open &{{
     esac
 }}
 
-set number
-set relativenumber
-
 cmd fuzzy_select $lf -remote "send $id select \"$(fzf --layout reverse)\""
 
+map DD delete
 map f fuzzy_select
 map R reload
+map . set hidden!
 map r push :rename<space>
 
 map <m-down> down
 map <m-up> up
 map <m-1> open
 map <m-3> updir
-map f $vim $(fzf)
 map zu unzip
 map zu extract
 
