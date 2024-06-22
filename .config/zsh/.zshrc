@@ -40,6 +40,9 @@ bindkey "\E[4~" end-of-line
 bindkey "\E[H" beginning-of-line
 bindkey "\E[F" end-of-line
 bindkey "\E[3~" delete-char
+bindkey '^[^?' backward-kill-word
+bindkey '^P' up-line-or-search
+bindkey "^N" down-line-or-search
 
 
 # Change cursor shape based on vim mode
@@ -132,3 +135,11 @@ bindkey '^E' autosuggest-accept
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+stty -ixon
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh

@@ -40,3 +40,5 @@ alias python=python3
 # old way of managing dot files, now I'm using stow
 # alias cfg="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias cfg="/usr/bin/git -C $HOME/.dotfiles/"
+alias i="sudo apt install"
+alias mp="multipass"
