@@ -42,3 +42,4 @@ alias python=python3
 alias cfg="/usr/bin/git -C $HOME/.dotfiles/"
 alias i="sudo apt install"
 alias mp="multipass"
+alias py="python3"

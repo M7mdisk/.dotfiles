@@ -125,6 +125,7 @@ PATH="$HOME/.local/bin:$PATH"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+eval "$(task --completion zsh)"
 
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -143,3 +144,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
+
+eval "$(kubectl completion zsh)"
+export KUBECONFIG=~/.kube/demos:~/.kube/prod
+alias k=kubectl
