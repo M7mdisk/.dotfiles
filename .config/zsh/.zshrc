@@ -12,19 +12,10 @@ function tkdir(){
     cd $1
 }
 
-# Directory stack
-setopt AUTO_PUSHD           # Push the current directory visited on the stack.
-setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
-setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
-alias d='dirs -v'
-for index ({1..9}) alias "$index"="cd +${index}"; unset index
-
-
 # Vim stuff
 
-IN_VIM=$(ps -p $PPID -o comm= | grep -qsE '[gm]?vim' && echo 1)
-
 # Use vim bindings, except when we're actually in vim
+IN_VIM=$(ps -p $PPID -o comm= | grep -qsE '[gm]?vim' && echo 1)
 [ -z $IN_VIM ] && bindkey -v || bindkey -e
 
 export KEYTIMEOUT=1
@@ -120,7 +111,7 @@ autoload -Uz compinit; compinit
 source ~/.config/zsh/completion.zsh
 
 PATH="$HOME/.cargo/bin:$PATH"
-PATH="$HOME/.go/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 
 eval "$(zoxide init zsh)"
@@ -147,4 +138,11 @@ source /usr/share/doc/fzf/examples/completion.zsh
 
 eval "$(kubectl completion zsh)"
 export KUBECONFIG=~/.kube/demos:~/.kube/prod
-alias k=kubectl
+
+if [ -z "$JIRA_API_TOKEN" ]; then
+  if [ -f ~/.jira_token ]; then
+    export JIRA_API_TOKEN=$(cat ~/.jira_token)
+  fi
+fi
+
+. "$HOME/.cargo/env"
